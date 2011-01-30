@@ -58,7 +58,7 @@ class Client(ShetClient):
 	
 	def on_btn_pressed(self, encoded):
 		mode, buttons = self.decode_buttons(encoded)
-		self.pressed_evt((mode, buttons))
+		self.pressed_evt(mode, buttons)
 	
 	
 	def encode_led(self, r,g,b):
