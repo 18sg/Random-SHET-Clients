@@ -12,7 +12,7 @@ class Client(ShetClient):
 	root = "/lounge/washing_machine/"
 	raw_root = "/lounge/arduino/"
 	washing_mode = (1, 3)
-	notify_panel_duration = 10
+	notify_panel_duration = 120
 	
 	def __init__(self, *args, **kwargs):
 		
