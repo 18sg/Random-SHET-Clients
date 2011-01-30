@@ -21,7 +21,7 @@ class Client(ShetClient):
 		
 		self.pressed_evt = self.add_event("pressed")
 		self.mode_changed_evt = self.add_event("mode_changed")
-		self.add_action("set_mode", self.set_mode)
+		self.add_property("mode", self.get_mode, self.set_mode)
 		
 		self.add_action("set_led", self.set_led)
 		self.add_action("set_led_instant", self.set_led_instant)
@@ -39,9 +39,12 @@ class Client(ShetClient):
 		self.mode_changed_evt(*self.decode_mode(encoded))
 	
 	
+	def set_mode(self, mode_data):
+		return self.set(self.raw_root + "btn_mode", self.encode_mode(*mode_data))
+	
 	@make_sync
-	def set_mode(self, mode_type, mode):
-		yield self.call(self.raw_root + "set_btn_mode", self.encode_mode(mode_type, mode))
+	def get_mode(self):
+		yield self.decode_mode((yield self.get(self.raw_root + "btn_mode")))
 	
 	
 	def decode_buttons(self, encoded):
