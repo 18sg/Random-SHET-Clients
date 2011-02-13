@@ -24,6 +24,15 @@ class Client(ShetClient):
 		self.add_action("washing_reminder_removed", self.wasing_reminder_removed)
 		self.add_action("all_washing_bookings", self.all_washing_bookings)
 		
+		self.irc_announce = "addressed"
+		self.add_property("irc_announcements",
+		                  self.get_irc_announcements,
+		                  self.set_irc_announcements)
+		
+		self.watch_event("/irc/on_say", self.irc_announce_all)
+		self.watch_event("/irc/on_action", self.irc_announce_all_action)
+		self.watch_event("/shelf/irc/on_address", self.irc_announce_addressed)
+		
 		print "Started..."
 	
 	
@@ -93,6 +102,31 @@ class Client(ShetClient):
 			joiner = "s have" if len(people) > 1 else " has"
 			
 			yield self.say("%sReminder%s been booked by %s %s."%(prefix, joiner, reminders, runtime))
+	
+	
+	def set_irc_announcements(self, value):
+		self.irc_announce = value
+		self.say("IRC Announcements set to %s."%value)
+	
+	
+	def get_irc_announcements(self):
+		return self.irc_announce
+	
+	
+	def irc_announce_all(self, user, message):
+		if self.irc_announce == "all":
+			return self.say("%s said %s"%(user, message))
+	
+	def irc_announce_all_action(self, user, message):
+		if self.irc_announce == "all":
+			return self.say("%s %s"%(user, message))
+	
+	def irc_announce_addressed(self, user, message):
+		print "all", user, message
+		if self.irc_announce == "addressed":
+			return self.say("%s said %s"%(user, message))
+	
+	
 
 
 
