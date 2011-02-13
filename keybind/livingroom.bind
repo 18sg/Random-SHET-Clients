@@ -1,9 +1,10 @@
-xmonad/show_browser  key super+w
-xmonad/show_recipes  key super+r
-xmonad/show_music    key super+m
-xmonad/next_window   key super+j
-xmonad/prev_window   key super+k
-xmonad/close_window  key alt+F4
+xmonad/show_browser     key super+w
+xmonad/show_recipes     key super+r
+xmonad/show_music       key super+m
+xmonad/next_window      key super+j
+xmonad/prev_window      key super+k
+xmonad/close_window     key alt+F4
+xmonad/switch_layout    key super+space
 
 browser/scroll_up       key Up
 browser/scroll_down     key Down
