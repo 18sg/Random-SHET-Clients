@@ -21,3 +21,5 @@ browser/enter           key Return
 browser/zoom_in         keydown ctrl; type +; keyup ctrl
 browser/zoom_out        keydown ctrl; type -; keyup ctrl
 browser/zoom_reset      key ctrl+0
+
+press_any_key           key ctrl
