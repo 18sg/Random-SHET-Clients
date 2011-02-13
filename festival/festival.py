@@ -1,8 +1,6 @@
 from twisted.internet.protocol import ProcessProtocol
 from twisted.internet.defer    import Deferred
 
-MAX_REQUESTS = 5
-
 
 class FloodException(Exception):
 	pass
