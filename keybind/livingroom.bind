@@ -1,0 +1,17 @@
+xmonad/show_browser  key super+w
+xmonad/show_recipes  key super+r
+xmonad/show_music    key super+m
+xmonad/next_window   key super+j
+xmonad/prev_window   key super+k
+xmonad/close_window  key alt+F4
+
+browser/scroll_up       key Up
+browser/scroll_down     key Down
+browser/scroll_pg_up    key Page_Up
+browser/scroll_pg_down  key Page_Down
+browser/scroll_left     key Left
+browser/scroll_right    key Right
+browser/zoom_in         keydown ctrl; type +; keyup ctrl
+browser/zoom_out        keydown ctrl; type -; keyup ctrl
+browser/zoom_reset      key ctrl+0
+
