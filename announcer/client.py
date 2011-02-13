@@ -106,7 +106,7 @@ class Client(ShetClient):
 	
 	def set_irc_announcements(self, value):
 		self.irc_announce = value
-		self.say("Read %s."%value)
+		self.say("Reading %s."%value)
 	
 	
 	def get_irc_announcements(self):
