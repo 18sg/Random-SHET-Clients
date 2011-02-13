@@ -11,7 +11,11 @@ browser/scroll_pg_up    key Page_Up
 browser/scroll_pg_down  key Page_Down
 browser/scroll_left     key Left
 browser/scroll_right    key Right
+browser/back            key XF86Back
+browser/forward         key XF86Forward
+browser/next_link       key Tab
+browser/previous_link   key shift+Tab
+browser/enter           key Return
 browser/zoom_in         keydown ctrl; type +; keyup ctrl
 browser/zoom_out        keydown ctrl; type -; keyup ctrl
 browser/zoom_reset      key ctrl+0
-
