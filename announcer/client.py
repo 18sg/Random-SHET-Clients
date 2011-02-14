@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import os, os.path, sys
+import os, os.path, sys, random
 
 from twisted.internet       import reactor
 from twisted.internet.defer import Deferred
@@ -23,6 +23,9 @@ class Client(ShetClient):
 		self.add_action("washing_reminder_booked", self.wasing_reminder_booked)
 		self.add_action("washing_reminder_removed", self.wasing_reminder_removed)
 		self.add_action("all_washing_bookings", self.all_washing_bookings)
+		
+		self.add_action("/matt/wank_start_announce", self.wank_start_announce)
+		self.add_action("/matt/wank_stop_announce", self.wank_stop_announce)
 		
 		self.irc_announce = "addressed"
 		self.add_property("irc_announcements",
@@ -126,6 +129,28 @@ class Client(ShetClient):
 		if self.irc_announce == "addressed":
 			return self.say("%s said %s"%(user, message))
 	
+	
+	def wank_start_announce(self):
+		euphemism = random.choice([
+			"Masturbation Commencing!",
+			"Matt be wanking, don't be hating!",
+			"Matt is charming his snake.",
+			"Matt is climbing the tree.",
+			"Matt is varnishing his pole.",
+			"Matt is enjoying some quality time.",
+		])
+		self.call("/irc/bot/say", euphemism)
+		return self.say(euphemism)
+	
+	def wank_stop_announce(self):
+		euphemism = random.choice([
+			"Matt is now recharging.",
+			"Matt finished making a mess.",
+			"Matt finished spanking the salami.",
+			"Matt has worked everything out.",
+		])
+		self.call("/irc/bot/say", euphemism)
+		return self.say(euphemism)
 	
 
 
