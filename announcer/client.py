@@ -130,6 +130,7 @@ class Client(ShetClient):
 			return self.say("%s said %s"%(user, message))
 	
 	
+	@make_sync
 	def wank_start_announce(self):
 		euphemism = random.choice([
 			"Masturbation Commencing!",
@@ -139,9 +140,12 @@ class Client(ShetClient):
 			"Matt is varnishing his pole.",
 			"Matt is enjoying some quality time.",
 		])
-		self.call("/irc/bot/say", euphemism)
-		return self.say(euphemism)
+		yield self.call("/irc/bot/say", euphemism)
+		
+		if ((yield self.get("/lounge/panel/mode")) == [2, 3]):
+			yield self.say(euphemism)
 	
+	@make_sync
 	def wank_stop_announce(self):
 		euphemism = random.choice([
 			"Matt is now recharging.",
@@ -149,8 +153,10 @@ class Client(ShetClient):
 			"Matt finished spanking the salami.",
 			"Matt has worked everything out.",
 		])
-		self.call("/irc/bot/say", euphemism)
-		return self.say(euphemism)
+		yield self.call("/irc/bot/say", euphemism)
+		
+		if ((yield self.get("/lounge/panel/mode")) == [2, 3]):
+			yield self.say(euphemism)
 	
 
 
