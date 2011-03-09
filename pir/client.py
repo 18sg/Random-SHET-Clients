@@ -11,17 +11,6 @@ DEFAULT_DELAY = 30
 
 class Client(ShetClient):
 	
-	root = "/house/power"
-	
-	lights = [
-		"/jonathan/arduino/bogvo",
-		"/tom/servo",
-		"/karl/arduino/light_hall",
-		"/karl/arduino/light_landing",
-		"/lounge/arduino/light_kitchen",
-		"/lounge/arduino/light_lounge",
-	]
-	
 	def __init__(self, pir_event, pres_property, delay_property, *args, **kwargs):
 		
 		ShetClient.__init__(self, *args, **kwargs)
