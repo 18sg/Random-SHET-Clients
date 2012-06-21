@@ -50,7 +50,7 @@ now_playing = (pid) ->
 		fs.readLink("/proc/#{pid}/fd/#{fd}") for fd in fds
 	.all()
 	.then (files) ->
-		(f for f in files when f.match /\.(flac|mp3)$/i)[0]
+		(f for f in files when f.match /\.(flac|mp3|m4a)$/i)[0]
 
 # Get the file currently playing in mplayer, caching the pid across calls.
 last_pid = null
